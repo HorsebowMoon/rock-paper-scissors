@@ -11,17 +11,19 @@ function computerPlay() {
 
 function gamePlay(playerSelection, computerSelection) {
     computerSelection = computerPlay();
-    playerSelection = "rock";
     let result = ""
-    /*playerSelection = prompt("Rock, paper, scissors: ");*/
-    /*playerSelection = playerSelection.toLowerCase();*/
+    playerSelection = prompt("Rock, paper, scissors: ");
+    playerSelection = playerSelection.toLowerCase();
     
-    if (computerSelection === "scissors") {
-        return result = "You win! Rock beats scissors";
-    } else if (computerSelection == "paper") {
-        return result = "You lose! Paper beats rock!";
-    } else {
-        return result = "You tie. Both picked rock";
+    if (playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "scissors" && computerSelection === "paper" || playerSelection === "paper" && computerSelection === "rock") {
+        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+        return result = "Victory";
+    } else if (playerSelection === "rocks" && computerSelection === "paper" || playerSelection ==="scissors" && computerSelection === "rock" || playerSelection === "paper" && computerSelection ==="scissors") {
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        return result = "Failure";
+    } else  {
+        console.log(`You tie. You picked ${playerSelection} and the computer picked ${computerSelection}`);
+        return result = "Tied";
     }
 }
 
@@ -31,9 +33,9 @@ function game() {
     for (let i = 0; i < 5; i++) {
         let result = gamePlay()
         console.log(result);
-        if (result === "You win! Rock beats scissors") {
+        if (result === "Victory") {
             playerWin += 1;
-        } else if ( result === "You lose! Paper beats rock!") {
+        } else if ( result === "Failure") {
             computerWin += 1;
         } else {
             console.log("Nobody won this round");
